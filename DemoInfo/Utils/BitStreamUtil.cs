@@ -177,7 +177,7 @@ namespace EHVAG.DemoInfo.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void AssertMaxBits(int max, int actual)
         {
-            //Debug.Assert(actual <= max, "trying to read too many bits", "Attempted to read {0} bits (max={1})", actual, max);
+            Debug.Assert(actual <= max, "trying to read too many bits", "Attempted to read {0} bits (max={1})", actual, max);
         }
     }
 }
