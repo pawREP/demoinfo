@@ -2,6 +2,8 @@
 using System.IO;
 using EHVAG.DemoInfo.Utils;
 using EHVAG.DemoInfo.ValveStructs;
+using EHVAG.DemoInfo.StringTables;
+using EHVAG.DemoInfo.States;
 
 namespace EHVAG.DemoInfo 
 {
@@ -22,14 +24,18 @@ namespace EHVAG.DemoInfo
         /// </summary>
         readonly IBitStream DemoStream;
 
+        public RawDataState RawData { get; private set; }
+
         /// <summary>
         /// Initializes the DemoParser and reads the DemoHeader.
         /// </summary>
-        /// <param name="demoFile">Demo file.</param>
-        public DemoParser(Stream demoFile)
+        /// <param name="demoStream">Demo file.</param>
+        public DemoParser(Stream demoStream)
         {
             DemoStream = new UnsafeBitStream();
-            DemoStream.Initialize(demoFile);
+            DemoStream.Initialize(demoStream);
+
+            RawData = new RawDataState();
 
             ParseHeader();
         }
@@ -60,7 +66,8 @@ namespace EHVAG.DemoInfo
                     break;
                 case DemoCommand.StringTables:
                     DemoStream.BeginChunk(DemoStream.ReadSignedInt(32) * 8);
-
+                    StringTable.ParseStringTables(this, DemoStream);
+                    RawData.RegeneratePlayerInfos();
                     DemoStream.EndChunk();
                     break;
                 case DemoCommand.UserCommand:

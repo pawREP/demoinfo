@@ -27,9 +27,9 @@
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Externalconsole>true</Externalconsole>
     <PlatformTarget>x86</PlatformTarget>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,11 +46,19 @@
     <Compile Include="ValveStructs\Split.cs" />
     <Compile Include="ValveStructs\Vector.cs" />
     <Compile Include="ValveStructs\QAngle.cs" />
+    <Compile Include="StringTables\StringTable.cs" />
+    <Compile Include="StringTables\StringTableEntry.cs" />
+    <Compile Include="ValveStructs\PlayerInfo.cs" />
+    <Compile Include="Utils\BinaryReaderExtension.cs" />
+    <Compile Include="States\RawDataState.cs" />
+    <Compile Include="Utils\HexDumpUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Utils\" />
     <Folder Include="ValveStructs\" />
+    <Folder Include="StringTables\" />
+    <Folder Include="States\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
