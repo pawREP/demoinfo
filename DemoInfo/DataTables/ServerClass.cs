@@ -13,6 +13,8 @@ namespace EHVAG.DemoInfo.DataTables
         public List<FlattenedPropEntry> FlattenedProps  { get; set; }
         public List<ServerClass> BaseClasses { get; set; }
 
+        public Type EntityType { get; set; }
+
         public ServerClass()
         {
             FlattenedProps = new List<FlattenedPropEntry>();

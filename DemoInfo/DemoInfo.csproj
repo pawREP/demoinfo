@@ -66,6 +66,12 @@
     <Compile Include="ValveStructs\SVCMessages.cs" />
     <Compile Include="DataTables\FlattenedPropEntry.cs" />
     <Compile Include="DataTables\SendTablePropertyEnums.cs" />
+    <Compile Include="Edicts\CSPlayer.cs" />
+    <Compile Include="Edicts\Reflection\ServerClassAttribute.cs" />
+    <Compile Include="Edicts\Reflection\NetworkedPropertyAttribute.cs" />
+    <Compile Include="Edicts\Reflection\NetworkedVar.cs" />
+    <Compile Include="Edicts\BaseEntity.cs" />
+    <Compile Include="Edicts\Reflection\ReflectionHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -75,6 +81,8 @@
     <Folder Include="States\" />
     <Folder Include="DataTables\" />
     <Folder Include="ProtobufMessages\" />
+    <Folder Include="Edicts\" />
+    <Folder Include="Edicts\Reflection\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

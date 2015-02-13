@@ -5,6 +5,7 @@ using EHVAG.DemoInfo.ValveStructs;
 using EHVAG.DemoInfo.StringTables;
 using EHVAG.DemoInfo.States;
 using EHVAG.DemoInfo.DataTables;
+using EHVAG.DemoInfo.Edicts.Reflection;
 
 namespace EHVAG.DemoInfo 
 {
@@ -66,6 +67,8 @@ namespace EHVAG.DemoInfo
                     DataTableParser dtParser = new DataTableParser();
                     dtParser.ParsePacket(DemoStream);
                     RawData.ServerClasses.AddRange(dtParser.ServerClasses);
+                    ReflectionHelper h = new ReflectionHelper(this);
+                    h.DoReflection();
                     DemoStream.EndChunk ();
                     break;
                 case DemoCommand.StringTables:

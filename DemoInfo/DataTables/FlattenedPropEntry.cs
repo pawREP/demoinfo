@@ -1,5 +1,6 @@
 ﻿using System;
 using EHVAG.DemoInfo.ProtobufMessages;
+using System.Reflection;
 
 namespace EHVAG.DemoInfo.DataTables
 {
@@ -8,6 +9,8 @@ namespace EHVAG.DemoInfo.DataTables
         public SendTable.SendProp Prop { get; private set; }
         public SendTable.SendProp ArrayElementProp { get; private set; }
         public string PropertyName { get; private set; }
+
+        internal MethodInfo Setter { get; set; }
 
         public FlattenedPropEntry(string propertyName, SendTable.SendProp prop, SendTable.SendProp arrayElementProp)
         {
