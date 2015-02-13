@@ -52,6 +52,20 @@
     <Compile Include="Utils\BinaryReaderExtension.cs" />
     <Compile Include="States\RawDataState.cs" />
     <Compile Include="Utils\HexDumpUtil.cs" />
+    <Compile Include="DataTables\DataTableParser.cs" />
+    <Compile Include="DataTables\ServerClass.cs" />
+    <Compile Include="DataTables\DataTable.cs" />
+    <Compile Include="DataTables\UnflattenedPropEntry.cs" />
+    <Compile Include="ProtobufMessages\CreateStringTable.cs" />
+    <Compile Include="ProtobufMessages\GameEvent.cs" />
+    <Compile Include="ProtobufMessages\GameEventList.cs" />
+    <Compile Include="ProtobufMessages\NETTick.cs" />
+    <Compile Include="ProtobufMessages\PacketEntities.cs" />
+    <Compile Include="ProtobufMessages\SendTable.cs" />
+    <Compile Include="ProtobufMessages\UpdateStringTable.cs" />
+    <Compile Include="ValveStructs\SVCMessages.cs" />
+    <Compile Include="DataTables\FlattenedPropEntry.cs" />
+    <Compile Include="DataTables\SendTablePropertyEnums.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -59,6 +73,8 @@
     <Folder Include="ValveStructs\" />
     <Folder Include="StringTables\" />
     <Folder Include="States\" />
+    <Folder Include="DataTables\" />
+    <Folder Include="ProtobufMessages\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

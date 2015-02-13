@@ -4,6 +4,7 @@ using EHVAG.DemoInfo.Utils;
 using EHVAG.DemoInfo.ValveStructs;
 using EHVAG.DemoInfo.StringTables;
 using EHVAG.DemoInfo.States;
+using EHVAG.DemoInfo.DataTables;
 
 namespace EHVAG.DemoInfo 
 {
@@ -61,7 +62,10 @@ namespace EHVAG.DemoInfo
                     DemoStream.EndChunk();
                     break;
                 case DemoCommand.DataTables:
-                    DemoStream.BeginChunk (DemoStream.ReadSignedInt (32) * 8);
+                    DemoStream.BeginChunk(DemoStream.ReadSignedInt(32) * 8);
+                    DataTableParser dtParser = new DataTableParser();
+                    dtParser.ParsePacket(DemoStream);
+                    RawData.ServerClasses.AddRange(dtParser.ServerClasses);
                     DemoStream.EndChunk ();
                     break;
                 case DemoCommand.StringTables:
