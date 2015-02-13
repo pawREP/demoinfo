@@ -65,13 +65,8 @@ namespace EHVAG.DemoInfo.States
                     int playerid = int.Parse(PlayerEntry.Name);
 
                     using (MemoryStream ms = new MemoryStream(PlayerEntry.UserData))
-                    {
-                        ms.Seek(0, System.IO.SeekOrigin.Begin);
-                        using (BinaryReader reader = new BinaryReader(ms))
-                        {
-                            PlayerInfos[playerid] = PlayerInfo.ParseFrom(reader);
-                        }
-                    }
+                    using (BinaryReader reader = new BinaryReader(ms))
+                        PlayerInfos[playerid] = PlayerInfo.ParseFrom(reader);
                 }
             }
         }

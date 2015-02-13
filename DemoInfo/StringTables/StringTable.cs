@@ -65,7 +65,7 @@ namespace EHVAG.DemoInfo.StringTables
 
                 if (entry.Name.Length >= 100)
                     throw new InvalidDataException(
-                        "Roy said I should throw this: The name of the string is longer than 100 chars, which is forbidden."
+                        "The name of the string is longer than 100 chars, which is forbidden."
                     );
 
                 if (reader.ReadBit())
