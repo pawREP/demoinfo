@@ -72,6 +72,13 @@
     <Compile Include="Edicts\Reflection\NetworkedVar.cs" />
     <Compile Include="Edicts\BaseEntity.cs" />
     <Compile Include="Edicts\Reflection\ReflectionHelper.cs" />
+    <Compile Include="ProtobufMessages\ProtobufMessageParser.cs" />
+    <Compile Include="Edicts\EntityInformation.cs" />
+    <Compile Include="DemoPackets\PacketEntitiesParser.cs" />
+    <Compile Include="DemoPackets\DemoPacketsParser.cs" />
+    <Compile Include="Utils\PropDecoder.cs" />
+    <Compile Include="Utils\FlagHelper.cs" />
+    <Compile Include="Utils\FieldIndexStore.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -83,6 +90,7 @@
     <Folder Include="ProtobufMessages\" />
     <Folder Include="Edicts\" />
     <Folder Include="Edicts\Reflection\" />
+    <Folder Include="DemoPackets\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

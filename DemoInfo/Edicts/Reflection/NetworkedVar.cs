@@ -4,10 +4,13 @@ namespace EHVAG.DemoInfo.Edicts.Reflection
 {
     public class NetworkedVar<T>
     {
-        public T Content { get; set; }
+        public EntityInformation entity;
+        public T Value { get; internal set; }
 
-        public NetworkedVar()
+
+        public static implicit operator T(NetworkedVar<T> d)
         {
+            return d.Value;
         }
     }
 }

@@ -18,7 +18,6 @@ namespace EHVAG.DemoInfo.ProtobufMessages
 
 		public void Parse(IBitStream bitstream, DemoParser parser)
 		{
-            throw new NotImplementedException();
 			while (!bitstream.ChunkFinished) {
 				var desc = bitstream.ReadProtobufVarInt();
 				var wireType = desc & 7;
@@ -31,11 +30,12 @@ namespace EHVAG.DemoInfo.ProtobufMessages
 
 					var len = bitstream.ReadProtobufVarInt();
 					bitstream.BeginChunk(len * 8);
-                    throw new NotImplementedException();
-                    //DemoInfo.DP.Handler.PacketEntitesHandler.Apply(this, bitstream, parser);
+                    // the execution path is so obvious :/
+
+                    parser.RawData.PacketParser.EntitiesParser.ParseEntitesMessage(this, bitstream);
 					bitstream.EndChunk();
 					if (!bitstream.ChunkFinished)
-						throw new NotImplementedException("Lord Gaben wasn't nice to us :/");
+						throw new NotImplementedException("PacketEntities packet had the wrong length");
 					break;
 				}
 

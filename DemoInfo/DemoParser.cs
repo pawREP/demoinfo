@@ -7,7 +7,7 @@ using EHVAG.DemoInfo.States;
 using EHVAG.DemoInfo.DataTables;
 using EHVAG.DemoInfo.Edicts.Reflection;
 
-namespace EHVAG.DemoInfo 
+namespace EHVAG.DemoInfo
 {
     /// <summary>
     /// Demo parser.
@@ -37,7 +37,8 @@ namespace EHVAG.DemoInfo
             DemoStream = new UnsafeBitStream();
             DemoStream.Initialize(demoStream);
 
-            RawData = new RawDataState();
+            RawData = new RawDataState(this);
+
 
             ParseHeader();
         }
@@ -53,7 +54,8 @@ namespace EHVAG.DemoInfo
             DemoStream.ReadInt(32); // tick number
             DemoStream.ReadByte(); // player slot
 
-            switch (command) {
+            switch (command)
+            {
                 case DemoCommand.Synctick:
                     break;
                 case DemoCommand.Stop:
@@ -69,7 +71,7 @@ namespace EHVAG.DemoInfo
                     RawData.ServerClasses.AddRange(dtParser.ServerClasses);
                     ReflectionHelper h = new ReflectionHelper(this);
                     h.DoReflection();
-                    DemoStream.EndChunk ();
+                    DemoStream.EndChunk();
                     break;
                 case DemoCommand.StringTables:
                     DemoStream.BeginChunk(DemoStream.ReadSignedInt(32) * 8);
@@ -100,7 +102,7 @@ namespace EHVAG.DemoInfo
             while (ParseOneTick())
             {
             }
-         }
+        }
 
 
         /// <summary>
@@ -128,7 +130,7 @@ namespace EHVAG.DemoInfo
             DemoStream.ReadInt(32); // SeqNrOut
 
             DemoStream.BeginChunk(DemoStream.ReadSignedInt(32) * 8);
-            //DemoPacketParser.ParsePacket(BitStream, this);
+            RawData.PacketParser.ParsePacket(DemoStream);
             DemoStream.EndChunk();
         }
 

@@ -4,13 +4,18 @@ using System.Collections.Generic;
 using EHVAG.DemoInfo.ValveStructs;
 using System.IO;
 using EHVAG.DemoInfo.Utils;
+using EHVAG.DemoInfo.DemoPackets;
 using EHVAG.DemoInfo.DataTables;
+using EHVAG.DemoInfo.Edicts;
 
 namespace EHVAG.DemoInfo.States
 {
     public class RawDataState
     {
-        public const int MAXPLAYERS = 64;
+        public const int MAX_PLAYERS = 64;
+        public const int MAX_EDICTS = 4096;
+
+        private DemoParser Parser { get; set; }
 
         /// <summary>
         /// Gets the state of the stringtables at this point of the demofile.
@@ -36,15 +41,25 @@ namespace EHVAG.DemoInfo.States
         /// <value>The player infos.</value>
         public PlayerInfo[] PlayerInfos { get; private set; }
 
+        /// <summary>
+        /// Gets or sets the packet parser.
+        /// </summary>
+        /// <value>The packet parser.</value>
+        public DemoPacketsParser PacketParser { get; private set; }
+
+        public EntityInformation[] Entities { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EHVAG.DemoInfo.States.RawDataState"/> class.
         /// </summary>
-        public RawDataState()
+        public RawDataState(DemoParser parser)
         {
+            this.Parser = parser;
             StringTables = new Dictionary<string, StringTable>();
             ServerClasses = new List<ServerClass>(128); //this is an estimate
-            PlayerInfos = new PlayerInfo[MAXPLAYERS];
+            PlayerInfos = new PlayerInfo[MAX_PLAYERS];
+            Entities = new EntityInformation[MAX_EDICTS];
+            PacketParser = new DemoPacketsParser(Parser);
         }
 
         /// <summary>

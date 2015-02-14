@@ -6,7 +6,7 @@ namespace EHVAG.DemoInfo.ValveStructs
     /// <summary>
     /// And Source-Engine Vector. 
     /// </summary>
-    class Vector
+    public class Vector
     {
         public float X { get; set; }
         public float Y { get; set; }
@@ -36,7 +36,7 @@ namespace EHVAG.DemoInfo.ValveStructs
             }
         }
 
-        public static Vector Parse(IBitStream reader)
+        internal static Vector Parse(IBitStream reader)
         {
             return new Vector
             {
